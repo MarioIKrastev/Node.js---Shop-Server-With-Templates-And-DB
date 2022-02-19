@@ -1,5 +1,5 @@
 # Xojo (formerly REALbasic and Real Studio)
-
+node_modules
 Builds*
 *.debug
 *.debug.app
