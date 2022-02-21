@@ -2,19 +2,22 @@ const path = require("path");
 
 const express = require("express");
 
-const rootDir = require("../util/path");
-const adminData = require("./admin");
+const shopController = require("../controllers/shop");
 
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
-  const products = adminData.products;
-  res.render("shop", {
-    prods: products,
-    pageTitle: "Shop",
-    path: "/",
-    hasProducts: products.length > 0,
-  });
-});
+router.get("/", shopController.getIndex); // imported CB function from the products.js file
+
+router.get("/products", shopController.getProducts);
+
+router.get("/products/:productId", shopController.getProduct);
+
+router.get("/cart", shopController.getCart);
+
+router.post("/cart", shopController.postCart);
+
+router.get("/orders", shopController.getOrders);
+
+router.get("/checkout", shopController.getChekout);
 
 module.exports = router;
